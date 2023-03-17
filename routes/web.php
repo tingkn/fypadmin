@@ -2,13 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{HomeController,PostController,UserController,
-    ReplyController,CommentController,VoteController,
-    SettingController, ContactFormController, FormsController};
+                            ReplyController,CommentController,VoteController,
+                            SettingController, ContactFormController, FormsController};
 use App\Http\Controllers\CompanyCRUDController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,41 +26,58 @@ use App\Http\Controllers\ForumController;
 |
 */
 
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-// Admin Controller
-Route::resource('companies', CompanyCRUDController::class);
-Route::resource('/admin/companies', CompanyCRUDController::class);
-
-Route::resource('blogs', BlogController::class);
-Route::resource('/admin/blogs', BlogController::class);
+Route::get('/overview', function () {
+    return view('/overview');
+});
 
 // Blog Controller
-Route::resource('blog', UserBlogController::class);
-Route::resource('/blog', UserBlogController::class);
+Route::resource('blogs', BlogController::class);
+Route::resource('/blogs', BlogController::class);
 
 // User Controller
 Route::resource('adminUser', UsersController::class);
-Route::resource('/admin/adminUser', UsersController::class);
+Route::resource('/adminUser', UsersController::class);
 
-Route::get('/admin/adminUser', [App\Http\Controllers\UsersController::class, 'index'])->name('adminUser.index');
-Route::delete('/admin/adminUser/{id}', [App\Http\Controllers\UsersController::class, 'destroy'])
+Route::get('/adminUser', [App\Http\Controllers\UsersController::class, 'index'])->name('adminUser.index');
+Route::delete('/adminUser/{id}', [App\Http\Controllers\UsersController::class, 'destroy'])
     ->name('adminUser.destroy');
 
 // Forum Controller
 Route::resource('adminForum', ForumController::class);
-Route::resource('/admin/adminForum', ForumController::class);
+Route::resource('/adminForum', ForumController::class);
 
-Route::get('/admin/adminForum', [App\Http\Controllers\ForumController::class, 'index'])->name('post.index');
-Route::delete('/admin/adminForum/{id}', [App\Http\Controllers\ForumController::class, 'destroy'])
+Route::get('/adminForum', [App\Http\Controllers\ForumController::class, 'index'])->name('post.index');
+Route::delete('/adminForum/{id}', [App\Http\Controllers\ForumController::class, 'destroy'])
     ->name('post.destroy');
 
-// Admin Contact Form
+// Contact Form Controller
 Route::resource('adminForm', FormsController::class);
-Route::resource('/admin/adminForm', FormsController::class);
+Route::resource('/adminForm', FormsController::class);
 
-Route::get('/admin/adminForm', [App\Http\Controllers\FormsController::class, 'index'])->name('adminForm.index');
-Route::delete('/admin/adminForm/{id}', [App\Http\Controllers\FormsController::class, 'destroy'])
+Route::get('/adminForm', [App\Http\Controllers\FormsController::class, 'index'])->name('adminForm.index');
+Route::delete('/adminForm/{id}', [App\Http\Controllers\FormsController::class, 'destroy'])
     ->name('adminForm.destroy');
+
+// Newsletter Controller
+Route::resource('newsletter', NewsletterController::class);
+Route::resource('/newsletter', NewsletterController::class);
+
+Route::get('/newsletter', [App\Http\Controllers\NewsletterController::class, 'index'])->name('newsletter.index');
+Route::delete('/newsletter/{id}', [App\Http\Controllers\NewsletterController::class, 'destroy'])
+    ->name('newsletter.destroy');
+
+// Generate Report
+// Route::get('/generate-report', 'ReportController@generateReport')->name('report.generate');
+Route::get('/generate-report', [App\Http\Controllers\ReportController::class, 'generateReport'])->name('report.generate');
