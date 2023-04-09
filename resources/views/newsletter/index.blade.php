@@ -59,14 +59,12 @@
         </table>
         {!! $newsletter->links() !!}
     </div>
-</body>
-</html>
-
 @else
     <!-- Redirect unauthenticated users to login page -->
     <div class="alert alert-danger">
         <p>You need to <a href="{{ route('login') }}">log in</a> to access this page.</p>
     </div>
 @endif
-
+</body>
+</html>
 @endsection

@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -41,7 +42,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Blog Content:</strong>
-                            <input type="text" name="content" class="form-control" placeholder="Blog Content">
+                            <input id="content" type="hidden" name="content">
+                            <trix-editor input="content"></trix-editor>
                             @error('content')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror

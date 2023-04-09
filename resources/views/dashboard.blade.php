@@ -35,32 +35,32 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
                                 <li>
-                                    <a href="overview">
+                                    <a href="{{ url('/overview') }}">
                                         Overview
                                     </a>
                                 </li>
 								<li>
-                                    <a href="adminUser">
+                                    <a href="{{ url('/adminUser') }}">
                                         User
                                     </a>
                                 </li>
 								<li>
-                                    <a href="blogs">
+                                    <a href="{{ url('/blogs') }}">
                                         Blog
                                     </a>
                                 </li>
 								<li>
-                                    <a href="adminForum">
+                                    <a href="{{ url('/adminForum') }}">
                                         Forum
                                     </a>
                                 </li>
 								<li>
-                                    <a href="newsletter">
+                                    <a href="{{ url('/newsletter') }}">
                                         Newsletter
                                     </a>
                                 </li>
 								<li>
-                                    <a href="adminForm">
+                                    <a href="{{ url('/adminForm') }}">
                                         Form
                                     </a>
                                 </li>
@@ -68,9 +68,6 @@
 								@guest
                                     <li>
                                         <a href="{{ route('login') }}">Login</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('register-user') }}">Register</a>
                                     </li>
                                 @else
                                     <li>

@@ -17,7 +17,6 @@ class UsersController extends Controller
         return view('adminUser.index', compact('users'));
     }
 
-    
     public function show(User $users)
     {
         return view('adminUser.show',compact('adminUser'));

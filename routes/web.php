@@ -79,5 +79,7 @@ Route::delete('/newsletter/{id}', [App\Http\Controllers\NewsletterController::cl
     ->name('newsletter.destroy');
 
 // Generate Report
-// Route::get('/generate-report', 'ReportController@generateReport')->name('report.generate');
-Route::get('/generate-report', [App\Http\Controllers\ReportController::class, 'generateReport'])->name('report.generate');
+Route::get('/generate-user-report', [App\Http\Controllers\ReportController::class, 'generateUserReport'])->name('UserReport.pdf');
+Route::get('/generate-blog-report', [App\Http\Controllers\ReportController::class, 'generateBlogReport'])->name('BlogReport.pdf');
+Route::get('/generate-form-report', [App\Http\Controllers\ReportController::class, 'generateFormReport'])->name('FormReport.pdf');
+Route::get('/generate-news-report', [App\Http\Controllers\ReportController::class, 'generateNewsReport'])->name('NewsReport.pdf');

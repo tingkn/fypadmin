@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(to right, #66a7dd 50%, #147fd7 100%);
+    font-family: Inter,Mulish,Open Sans,Roboto,sans-serif;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 100px;
+}
+h1 a {
+    color: white;
+}
+h1 a:hover {
+    color: white;
+}
+
+.bg-blue {
+    background-color: #3490dc;
+}
+
+a {
+    color: #3490dc;
+    margin-left: 5px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #2a74b0;
+}
+
+.button-login {
+    background-color: #3490dc;
+    color: white;
+}
+
+.button-login:hover {
+    background-color: #1381dc;
+    color: white;
+}
+
