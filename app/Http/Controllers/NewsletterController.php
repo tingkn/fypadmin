@@ -12,6 +12,7 @@ class NewsletterController extends Controller
             ->when($query, function ($q) use ($query) {
                 return $q->where('email', 'like', '%'.$query.'%');
             })
+            ->orderByDesc('created_at')
             ->paginate(10);
 
         return view('newsletter.index', compact('newsletter'));

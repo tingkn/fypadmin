@@ -28,14 +28,12 @@ tbody tr:nth-child(even) {
 <table>
     <thead>
         <tr>
-            <th>ID</th>
             <th>Email</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($newsletter as $newsletter)
             <tr>
-                <td>{{ $newsletter->id }}</td>
                 <td>{{ $newsletter->email }}</td>
             </tr>
         @endforeach

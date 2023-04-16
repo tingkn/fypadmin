@@ -66,7 +66,7 @@ class ReportController extends Controller
 
     public function generateNewsReport()
     {
-        $newsletter = DB::table('newsletter')->select('id', 'email')->get();
+        $newsletter = DB::table('newsletter')->select('email')->get();
 
         $pdf = new Dompdf();
         $pdf->loadHtml(view('report/NewsletterReportpdf', ['newsletter' => $newsletter])->render());

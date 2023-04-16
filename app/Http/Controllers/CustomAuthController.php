@@ -18,15 +18,29 @@ class CustomAuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('overview')->withSuccess('Signed in');
         }
-  
-        return redirect("login")->with('error', 'Login details are not valid');
+    
+        $errors = array('password' => 'Invalid credentials');
+        if (!$this->isEmailExist($request->email)) {
+            $errors['email'] = 'Email does not exist';
+        }
+    
+        return redirect("login")->withErrors($errors);
     }
-
+    
+    private function isEmailExist($email)
+    {
+        $user = Admin::where('email', $email)->first();
+        if ($user) {
+            return true;
+        }
+        return false;
+    }
+    
     public function registration()
     {
         return view('auth.registration');

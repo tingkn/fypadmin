@@ -19,6 +19,7 @@ class FormsController extends Controller
                 return $q->where('name', 'like', '%'.$query.'%')
                         ->orWhere('email', 'like', '%'.$query.'%');
             })
+            ->orderByDesc('created_at')
             ->paginate(10);
 
         return view('adminForm.index', compact('forms'));

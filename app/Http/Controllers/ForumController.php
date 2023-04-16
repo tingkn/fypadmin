@@ -13,6 +13,7 @@ class ForumController extends Controller
                 return $q->where('title', 'like', '%'.$query.'%')
                         ->orWhere('content', 'like', '%'.$query.'%');
             })
+            ->orderByDesc('created_at')
             ->paginate(10);
 
         return view('post.index', compact('posts'));

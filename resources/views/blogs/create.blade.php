@@ -49,7 +49,7 @@
                             @enderror
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                <button type="submit" class="btn btn-primary ml-3">Save & Publish</button>
             </div>
         </form>
 </body>

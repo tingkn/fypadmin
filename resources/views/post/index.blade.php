@@ -15,13 +15,14 @@
 </head>
 <body>
     <h1>Forum</h1>
-    <form action="{{ route('post.index') }}" method="GET">
-        <div class="form-group">
-            <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
-        </div>
-    </form>
 
-    <div class="container">
+    <div class="container">    
+        <form action="{{ route('post.index') }}" method="GET">
+            <div class="form-group">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
+            </div>
+        </form>
+
         <table class="table table-bordered">
             <tr>
                 <th>Post ID</th>

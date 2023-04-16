@@ -15,13 +15,13 @@
 </head>
 <body>
 <h1>Blog</h1>
+    <div class="container">
     <form action="{{ route('blogs.index') }}" method="GET">
         <div class="form-group">
             <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
         </div>
     </form>
 
-    <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
                     <div class="pull-right mb-2">

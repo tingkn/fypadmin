@@ -10,8 +10,10 @@ class UsersController extends Controller
 
         $users = User::query()
             ->when($query, function ($q) use ($query) {
-                return $q->where('name', 'like', '%'.$query.'%');
+                return $q->where('name', 'like', '%'.$query.'%')
+                         ->orWhere('id', 'like', '%'.$query.'%');
             })
+            ->orderByDesc('created_at')
             ->paginate(10);
 
         return view('adminUser.index', compact('users'));

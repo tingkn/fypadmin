@@ -15,14 +15,14 @@
 </head>
 <body>
 <h1>Form</h1>
-    <form action="{{ route('adminForm.index') }}" method="GET">
+
+    <div class="container">
+        <form action="{{ route('adminForm.index') }}" method="GET">
         <div class="form-group">
             <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
         </div>
     </form>
 
-    <div class="container">
-    
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
         <p>{{ $message }}</p>

@@ -15,11 +15,14 @@ class BlogController extends Controller
 
         $blogs = Blog::query()
             ->when($query, function ($q) use ($query) {
-                return $q->where('title', 'like', '%'.$query.'%');
+                return $q->where('title', 'like', '%'.$query.'%')
+                        ->orWhere('id', 'like', '%'.$query.'%');
             })
-            ->paginate(10);
+            ->orderByDesc('created_at')
+            ->paginate(3);
 
         return view('blogs.index', compact('blogs'));
+
     }
 
     
