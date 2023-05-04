@@ -61,7 +61,7 @@
                                 </li>
 								<li>
                                     <a href="{{ url('/adminForm') }}">
-                                        Form
+                                       Contact Form
                                     </a>
                                 </li>
 								<li class="app-sidebar__heading">Authentication</li>

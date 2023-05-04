@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<h1>Form</h1>
+<h1>Contact Form</h1>
 
     <div class="container">
         <form action="{{ route('adminForm.index') }}" method="GET">
